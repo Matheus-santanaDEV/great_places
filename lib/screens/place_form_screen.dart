@@ -12,7 +12,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('data'),
+        title: const Text('data'),
       ),
     );
   }
