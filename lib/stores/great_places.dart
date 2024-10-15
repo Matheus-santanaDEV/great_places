@@ -5,12 +5,24 @@ part 'great_places.g.dart';
 class GreatPlaces = _GreatPlaces with _$GreatPlaces;
 
 abstract class _GreatPlaces with Store {
+  final ObservableList<Places> _items = ObservableList.of([]);
 
- final ObservableList<Places> _items = ObservableList.of([]);
 
-  ObservableList<Places> get  items{
-  return [..._items];
 
-}
+  ObservableList<Places> get items {
+    return ObservableList<Places>.of(_items);
+  }
+
+  @action
+  int itemCount() {
+    return items.length;
+  }
+
+  @action 
+  Places itemByIndex(int index){
+    return _items[index];
+  }
+
+
 
 }

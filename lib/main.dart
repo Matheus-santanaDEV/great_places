@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:great_places/screens/place_form_screen.dart';
 import 'package:great_places/screens/places_list_screen.dart';
+import 'package:great_places/stores/add_location.dart';
+import 'package:great_places/stores/great_places.dart';
+import 'package:provider/provider.dart';
 
 final _router = GoRouter(
   routes: [
@@ -17,7 +20,11 @@ final _router = GoRouter(
 );
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    Provider<GreatPlaces>(create: (_)=> GreatPlaces()),
+    Provider<AddLocation>(create: (_)=> AddLocation(),)
+  ],
+  child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
