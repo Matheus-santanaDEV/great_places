@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:great_places/components/image_input.dart';
+import 'package:great_places/stores/add_location.dart';
+import 'package:provider/provider.dart';
 
 class PlaceFormScreen extends StatefulWidget {
   const PlaceFormScreen({super.key});
@@ -9,12 +11,14 @@ class PlaceFormScreen extends StatefulWidget {
 }
 
 class _PlaceFormScreenState extends State<PlaceFormScreen> {
-  final _titleController = TextEditingController();
-
-  void _submitForm() {}
-
+  // final _titleController = TextEditingController();
+  
+ 
   @override
   Widget build(BuildContext context) {
+
+    AddLocation addLocation = Provider.of<AddLocation>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Novo local'),
@@ -28,7 +32,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
               child: Column(
                 children: [
                   TextField(
-                    controller: _titleController,
+                    controller: addLocation.titleController,
                     decoration: const InputDecoration(labelText: 'Título'),
                   ),
                   const SizedBox(
@@ -44,7 +48,7 @@ class _PlaceFormScreenState extends State<PlaceFormScreen> {
                 backgroundColor: WidgetStatePropertyAll(Colors.indigo),
                 elevation: WidgetStatePropertyAll(0),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-            onPressed: _submitForm,
+            onPressed: null,
             label: const Text(
               'Adicionar',
               style: TextStyle(color: Colors.white),
